@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
     <h1>{{title}}</h1>
+    <ps-planets-list></ps-planets-list>
   `
 })
 export class AppComponent {
