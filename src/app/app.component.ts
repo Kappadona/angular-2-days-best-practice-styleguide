@@ -4,8 +4,8 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
     <h1>{{title}}</h1>
-    <ps-planets-list></ps-planets-list>
-    <ps-planets-detail [planetIndex]="2"></ps-planets-detail>
+    <ps-planets-list (planetClick)="detailPlanetIndex = $event"></ps-planets-list>
+    <ps-planets-detail [planetIndex]="detailPlanetIndex"></ps-planets-detail>
   `
 })
 export class AppComponent {

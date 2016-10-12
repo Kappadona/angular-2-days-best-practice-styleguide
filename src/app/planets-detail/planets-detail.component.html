@@ -1,3 +1,5 @@
-<h2>Detail: {{planet.name}}</h2>
+<div *ngIf="planet">
+  <h2>Detail: {{planet.name}}</h2>
 
-{{planet.sunDistance}}
+  {{planet.sunDistance}}
+</div>
