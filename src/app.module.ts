@@ -4,10 +4,14 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { PlanetsListComponent } from './planets-list.component';
 
+import { LightMinutesPipe } from './light-minutes.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
-    PlanetsListComponent
+    PlanetsListComponent,
+
+    LightMinutesPipe
   ],
   imports: [
     BrowserModule

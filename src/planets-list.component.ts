@@ -1,31 +1,11 @@
 import { Component } from '@angular/core';
 
-interface Planet {
-  name: string;
-}
-
-class PlanetsService {
-  planets: Planet[] = [
-    {name: 'Merkur'},
-    {name: 'Venus'},
-    {name: 'Erde'},
-    {name: 'Mars'},
-    {name: 'Jupiter'},
-    {name: 'Saturn'},
-    {name: 'Uranus'},
-    {name: 'Neptun'}
-  ];
-}
+import { PlanetsService } from './planets.service';
+import { Planet } from './planet.model';
 
 @Component({
   selector: 'ps-planets-list',
-  template: `
-<ul>
-  <li *ngFor="let planet of planets">
-    {{planet.name}}
-  </li>
-</ul>
-`,
+  templateUrl: 'src/planets-list.component.html',
   providers: [PlanetsService]
 })
 export class PlanetsListComponent {

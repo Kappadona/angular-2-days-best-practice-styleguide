@@ -1,0 +1,6 @@
+<ul>
+  <li *ngFor="let planet of planets">
+    {{planet.name}} to the sun: {{planet.sunDistance}}*10<sup>6</sup>km.
+    The light will take {{planet.sunDistance | lightMinutes}} minutes.
+  </li>
+</ul>

@@ -1,0 +1,14 @@
+import { Planet } from './planet.model';
+
+export class PlanetsService {
+  planets: Planet[] = [
+    {name: 'Merkur', sunDistance: 58},
+    {name: 'Venus', sunDistance: 108},
+    {name: 'Erde', sunDistance: 150},
+    {name: 'Mars', sunDistance: 228},
+    {name: 'Jupiter', sunDistance: 778},
+    {name: 'Saturn', sunDistance: 1433},
+    {name: 'Uranus', sunDistance: 2872},
+    {name: 'Neptun', sunDistance: 4495}
+  ];
+}
