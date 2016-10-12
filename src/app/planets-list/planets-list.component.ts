@@ -2,6 +2,7 @@ import {
   Component,
   Output,
   EventEmitter,
+  OnInit
 } from '@angular/core';
 
 import {
@@ -13,13 +14,18 @@ import {
   selector: 'ps-planets-list',
   templateUrl: 'src/app/planets-list/planets-list.component.html',
 })
-export class PlanetsListComponent {
+export class PlanetsListComponent implements OnInit {
 
   @Output() planetClick = new EventEmitter<number>();
   planets: Planet[];
 
-  constructor(planetsService: PlanetsService) {
-    this.planets = planetsService.planets;
+  constructor(
+    private planetsService: PlanetsService
+  ) { }
+
+  ngOnInit() {
+    this.planetsService.getPlanets()
+      .subscribe(planets => this.planets = planets);
   }
 
   planetClicked(index: number) {

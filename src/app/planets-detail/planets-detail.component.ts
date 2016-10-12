@@ -1,7 +1,8 @@
 import {
   Component,
   Input,
-  OnChanges
+  OnChanges,
+  SimpleChanges
 } from '@angular/core';
 
 import {
@@ -17,12 +18,31 @@ export class PlanetsDetailComponent implements OnChanges {
 
   @Input() planetIndex: number = 0;
   planet: Planet;
+  countdownTillLiftOf = 0;
+  rocketsStarted = 0;
 
   constructor(
     private planetsService: PlanetsService
   ) {}
 
-  ngOnChanges() {
-    this.planet = this.planetsService.planets[this.planetIndex];
+  ngOnChanges(changes: SimpleChanges) {
+    // Check if observalbe is running
+    const index = changes['planetIndex'].currentValue;
+    this.planetsService.getPlanets()
+      .subscribe(planets => this.planet = planets[index]);
+  }
+
+  startRocket() {
+    const countdownTillLiftOf = 30;
+    this.countdownTillLiftOf = countdownTillLiftOf;
+
+    // store the observable in attr
+    // e.g. this.rocket$
+    this.planetsService.startJourneyToSun(this.planet)
+      .subscribe(
+        timeSinceStart => this.countdownTillLiftOf = countdownTillLiftOf - timeSinceStart.value - 1,
+        error => console.error(error),
+        () => this.rocketsStarted++
+      );
   }
 }

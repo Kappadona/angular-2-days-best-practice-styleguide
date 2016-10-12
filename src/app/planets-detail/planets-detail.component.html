@@ -2,4 +2,9 @@
   <h2>Detail: {{planet.name}}</h2>
 
   {{planet.sunDistance}}
+
+  <button type="button" (click)="startRocket()">Start Rocket</button>
+
+  <p>Rockets started: {{rocketsStarted}}</p>
+  <p>countdown till next lift off: {{countdownTillLiftOf}}</p>
 </div>
