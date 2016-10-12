@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   template: `
     <h1>{{title}}</h1>
     <ps-planets-list></ps-planets-list>
+    <ps-planets-detail [planetIndex]="2"></ps-planets-detail>
   `
 })
 export class AppComponent {

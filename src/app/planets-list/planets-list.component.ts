@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 
-import { PlanetsService } from './planets.service';
-import { Planet } from './planet.model';
+import {
+  Planet,
+  PlanetsService
+} from '../shared';
 
 @Component({
   selector: 'ps-planets-list',
-  templateUrl: 'src/planets-list.component.html',
-  providers: [PlanetsService]
+  templateUrl: 'src/app/planets-list/planets-list.component.html',
 })
 export class PlanetsListComponent {
   planets: Planet[];
