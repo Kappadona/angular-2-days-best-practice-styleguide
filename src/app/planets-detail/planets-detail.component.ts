@@ -2,13 +2,16 @@ import {
   Component,
   Input,
   OnChanges,
-  SimpleChanges
+  SimpleChanges,
+  EventEmitter,
+  Output
 } from '@angular/core';
 
 import {
   Planet,
   PlanetsService
 } from '../shared';
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'ps-planets-detail',
@@ -16,33 +19,41 @@ import {
 })
 export class PlanetsDetailComponent implements OnChanges {
 
-  @Input() planetIndex: number = 0;
-  planet: Planet;
-  countdownTillLiftOf = 0;
-  rocketsStarted = 0;
+  @Input() planet: Planet;
+  @Output() rocketsStarted = new EventEmitter<number>();
+  countdownTillLiftOf: number = 0;
+  rocketsStartedNumber: number = 0;
+  rocket$: Subscription;
 
-  constructor(
-    private planetsService: PlanetsService
-  ) {}
+  constructor(private planetsService: PlanetsService) {
+  }
 
   ngOnChanges(changes: SimpleChanges) {
-    // Check if observalbe is running
-    const index = changes['planetIndex'].currentValue;
-    this.planetsService.getPlanets()
-      .subscribe(planets => this.planet = planets[index]);
+    if (this.rocket$) {
+      this.rocket$.unsubscribe();
+    }
+    this.countdownTillLiftOf = 0;
+
+    this.planet = changes['planet'].currentValue;
   }
 
   startRocket() {
-    const countdownTillLiftOf = 30;
-    this.countdownTillLiftOf = countdownTillLiftOf;
+    this.countdownTillLiftOf = this.planetsService.countdownDurationLiftOf;
 
-    // store the observable in attr
-    // e.g. this.rocket$
-    this.planetsService.startJourneyToSun(this.planet)
+    this.rocket$ = this.planetsService.startJourneyToSun()
       .subscribe(
-        timeSinceStart => this.countdownTillLiftOf = countdownTillLiftOf - timeSinceStart.value - 1,
+        timeSinceStart => this.countdownTillLiftOf = this.planetsService.countdownDurationLiftOf - timeSinceStart.value - 1,
         error => console.error(error),
-        () => this.rocketsStarted++
+        () => {
+          this.rocketsStartedNumber++;
+          this.rocketsStarted.emit(this.rocketsStartedNumber);
+        }
       );
+  }
+
+  stopRocket() {
+    this.rocket$.unsubscribe();
+    this.countdownTillLiftOf = 0;
+
   }
 }

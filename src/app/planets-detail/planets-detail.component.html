@@ -1,10 +1,16 @@
-<div *ngIf="planet">
+<div *ngIf="planet" style="box-shadow: black 2px 2px 10px 2px; margin: 10px; padding: 20px; display: flex; flex-direction: column;">
+  <h1 style="text-align: center;">{{countdownTillLiftOf}}</h1>
+
+  <button *ngIf="!rocket$ || rocket$.closed" type="button" (click)="startRocket()">START ROCKET</button>
+  <button *ngIf="rocket$ && !rocket$.closed" type="button" (click)="stopRocket()">STOP COUNTDOWN</button>
+
+
   <h2>Detail: {{planet.name}}</h2>
 
   {{planet.sunDistance}}
 
-  <button type="button" (click)="startRocket()">Start Rocket</button>
 
-  <p>Rockets started: {{rocketsStarted}}</p>
-  <p>countdown till next lift off: {{countdownTillLiftOf}}</p>
+  <p>Rockets started: {{rocketsStartedNumber}}</p>
+  <p>countdown till next lift off</p>
+
 </div>

@@ -1,0 +1,8 @@
+<div class="planet-entry" [ngStyle]="{'background-color': tonsOfTrash === planet.storageInTons ? 'red' : ''}">
+    <div class="flex direction-row">
+        <span class="flex">{{planet.name}}</span>
+        <span style="margin-left: auto;" class="flex">{{tonsOfTrash}} / {{planet.storageInTons}} tons of thrash</span>
+    </div>
+    <span>Distance to the sun: {{planet.sunDistance}}*10<sup>6</sup>km.</span>
+    <span>The light will take {{planet.sunDistance | lightMinutes}} minutes.</span>
+</div>

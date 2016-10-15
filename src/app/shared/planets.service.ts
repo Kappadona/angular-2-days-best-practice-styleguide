@@ -12,16 +12,8 @@ import { Planet } from './planet.model';
 
 @Injectable()
 export class PlanetsService {
-  planets: Planet[] = [
-    {name: 'Merkur', sunDistance: 58},
-    {name: 'Venus', sunDistance: 108},
-    {name: 'Erde', sunDistance: 150},
-    {name: 'Mars', sunDistance: 228},
-    {name: 'Jupiter', sunDistance: 778},
-    {name: 'Saturn', sunDistance: 1433},
-    {name: 'Uranus', sunDistance: 2872},
-    {name: 'Neptun', sunDistance: 4495}
-  ];
+
+  countdownDurationLiftOf = 3;
 
   constructor(private http: Http) {}
 
@@ -30,9 +22,17 @@ export class PlanetsService {
       .map(response => response.json());
   }
 
-  startJourneyToSun(planet: Planet) {
+  startJourneyToSun() {
+    const countdownDuration: number = this.countdownDurationLiftOf;
+
     return Observable.interval(1000 /* ms */)
       .timeInterval()
-      .take(30);
+      .take(countdownDuration);
+  }
+
+  pollutePlanet (planet: Planet) {
+    return Observable.interval(1000 /* ms */)
+      .timeInterval()
+      .take(planet.storageInTons / planet.tonsOfThrashPerSec)
   }
 }

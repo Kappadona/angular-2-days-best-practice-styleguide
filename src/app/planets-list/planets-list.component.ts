@@ -2,7 +2,8 @@ import {
   Component,
   Output,
   EventEmitter,
-  OnInit
+  OnInit,
+  Input
 } from '@angular/core';
 
 import {
@@ -12,12 +13,13 @@ import {
 
 @Component({
   selector: 'ps-planets-list',
-  templateUrl: 'src/app/planets-list/planets-list.component.html',
+  templateUrl: 'src/app/planets-list/planets-list.component.html'
 })
 export class PlanetsListComponent implements OnInit {
-
-  @Output() planetClick = new EventEmitter<number>();
+  @Output() planetClick = new EventEmitter<Planet>();
+  @Input() rocketsStarted: number;
   planets: Planet[];
+  selectedPlanet: Planet;
 
   constructor(
     private planetsService: PlanetsService
@@ -28,7 +30,9 @@ export class PlanetsListComponent implements OnInit {
       .subscribe(planets => this.planets = planets);
   }
 
-  planetClicked(index: number) {
-    this.planetClick.emit(index);
+  planetClicked(planet: Planet) {
+    this.planetClick.emit(planet);
+
+    this.selectedPlanet = planet;
   }
 }

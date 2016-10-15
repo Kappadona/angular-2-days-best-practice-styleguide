@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { PlanetsListComponent } from './planets-list/planets-list.component';
 import { PlanetsDetailComponent } from './planets-detail/planets-detail.component';
+import { PlanetEntryComponent } from "./planets-list/planet-entry/planet-entry.component";
 
 import { PlanetsService } from './shared';
 
@@ -17,7 +18,7 @@ import {
     AppComponent,
     PlanetsListComponent,
     PlanetsDetailComponent,
-
+    PlanetEntryComponent,
     LightMinutesPipe
   ],
   imports: [

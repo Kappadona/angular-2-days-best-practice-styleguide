@@ -1,6 +1,5 @@
-<ul>
-  <li *ngFor="let planet of planets; let index = index" (click)="planetClicked(index)">
-    {{planet.name}} to the sun: {{planet.sunDistance}}*10<sup>6</sup>km.
-    The light will take {{planet.sunDistance | lightMinutes}} minutes.
-  </li>
-</ul>
+<div style="display: flex; flex-direction: column;">
+  <div style="display: flex; flex-direction: row; margin: 10px 0;" *ngFor="let planet of planets" (click)="planetClicked(planet)">
+    <ps-planet-entry [selectedPlanet]="selectedPlanet" [rocketsStarted]="rocketsStarted" [planet]="planet" [ngStyle]="{'box-shadow': selectedPlanet === planet ? 'inset black 1px 1px 10px 2px' : 'black 1px 1px 10px 2px'}"></ps-planet-entry>
+  </div>
+</div>

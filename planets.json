@@ -1,34 +1,50 @@
 [
   {
     "name": "Merkur",
-    "sunDistance": 58
+    "sunDistance": 58,
+    "tonsOfThrashPerSec": 2,
+    "storageInTons": 70
   },
   {
     "name": "Venus",
-    "sunDistance": 108
+    "sunDistance": 108,
+    "tonsOfThrashPerSec": 5,
+    "storageInTons": 100
   },
   {
     "name": "Erde",
-    "sunDistance": 150
+    "sunDistance": 150,
+    "tonsOfThrashPerSec": 15,
+    "storageInTons": 90
   },
   {
     "name": "Mars",
-    "sunDistance": 228
+    "sunDistance": 228,
+    "tonsOfThrashPerSec": 2,
+    "storageInTons": 90
   },
   {
     "name": "Jupiter",
-    "sunDistance": 778
+    "sunDistance": 778,
+    "tonsOfThrashPerSec": 7,
+    "storageInTons": 140
   },
   {
     "name": "Saturn",
-    "sunDistance": 1433
+    "sunDistance": 1433,
+    "tonsOfThrashPerSec": 10,
+    "storageInTons": 140
   },
   {
     "name": "Uranus",
-    "sunDistance": 2872
+    "sunDistance": 2872,
+    "tonsOfThrashPerSec": 1,
+    "storageInTons": 200
   },
   {
     "name": "Neptun",
-    "sunDistance": 4495
+    "sunDistance": 4495,
+    "tonsOfThrashPerSec": 4,
+    "storageInTons": 60
   }
 ]
